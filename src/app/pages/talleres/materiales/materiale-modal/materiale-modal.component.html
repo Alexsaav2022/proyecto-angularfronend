@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{title}} Material</h4>
+  <button (click)="activeModal.dismiss()" type="button" class="close"
+          aria-label="Close button" aria-describedby="modal-title">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formMateriale">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Nombre</label>
+      <div class="col-sm-9">
+        <input formControlName="editNombre" type="text"  class="form-control" placeholder="Ingrese nombre">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Descripcion</label>
+      <div class="col-sm-9">
+        <input formControlName="editDescripcion" type="text" class="form-control" placeholder="Ingrese descripcion">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" [disabled]="formMateriale.invalid" *ngIf="title=='Nuevo'"   class="btn btn-primary"(click)="save()">Guardar</button>
+  <button type="button" [disabled]="formMateriale.invalid" *ngIf="title=='Modificar'" class="btn btn-primary" (click)="update()">Guardar</button>
+  <button type="button" class="btn btn-outline-secondary"
+          (click)="activeModal.dismiss('Cerrar modal')">Cancelar</button>
+</div>
+
+<pre>{{formMateriale.value | json}}</pre>
